@@ -4,88 +4,336 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biomedical Diagnostics</title>
+<title>Biomedical Engineering Hub</title>
 <style>
+:root {
+  --bg:#0b1220;
+  --panel:#131f31;
+  --panel2:#19283d;
+  --line:#263950;
+  --text:#e7f0fa;
+  --muted:#8fa5bc;
+  --blue:#38bdf8;
+  --green:#34d399;
+  --orange:#fbbf24;
+}
+* {box-sizing:border-box}
 body {
-  background: #101827;
-  color: white;
-  font-family: Arial, sans-serif;
-  padding: 30px;
-  max-width: 800px;
-  margin: auto;
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
 }
-h1 { color: #38bdf8; }
+.layout {display:flex;min-height:100vh}
+.sidebar {
+  width:245px;
+  background:#0e1929;
+  border-right:1px solid var(--line);
+  padding:25px 17px;
+  flex-shrink:0;
+}
+.brand {font-size:19px;font-weight:bold;color:var(--blue)}
+.brand small {display:block;color:var(--muted);font-size:10px;margin-top:7px;letter-spacing:2px}
+.navtitle {font-size:10px;color:#71869d;margin:35px 10px 12px;letter-spacing:2px}
+.nav button {
+  display:block;width:100%;text-align:left;
+  padding:13px 12px;margin:5px 0;
+  border:0;border-radius:7px;background:transparent;
+  color:#a9bbcf;cursor:pointer;font-size:14px;
+}
+.nav button:hover,.nav button.active {
+  background:#1a3048;color:var(--blue);
+}
+.sidebar-footer {margin-top:45px;color:#71869d;font-size:11px;line-height:1.8}
+main {flex:1;padding:30px;min-width:0}
+.top {
+  display:flex;justify-content:space-between;
+  align-items:center;gap:15px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:20px;
+}
+.top h1 {font-size:23px;margin:0}
+.top p {color:var(--muted);font-size:12px;margin:7px 0 0}
+.status {color:var(--green);font-size:12px}
+.section {margin-top:27px}
+.section h2 {font-size:17px;margin-bottom:15px}
+.grid {
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+ gap:14px;
+}
 .card {
-  background: #1e293b;
-  padding: 22px;
-  border-radius: 12px;
-  margin-top: 20px;
+ background:var(--panel);
+ border:1px solid var(--line);
+ padding:19px;border-radius:11px;
 }
-button {
-  background: #0284c7;
-  color: white;
-  border: 0;
-  padding: 12px 18px;
-  margin: 8px 5px 8px 0;
-  border-radius: 7px;
-  cursor: pointer;
+.card small {color:var(--muted)}
+.metric {font-size:29px;font-weight:bold;margin:13px 0}
+.blue {color:var(--blue)}
+.green {color:var(--green)}
+.orange {color:var(--orange)}
+.device {
+ display:flex;justify-content:space-between;gap:12px;
+ align-items:center;
 }
-button:hover { background: #0369a1; }
-#result {
-  color: #7dd3fc;
-  line-height: 1.7;
-  margin-top: 20px;
+.device h3 {font-size:15px;margin:0 0 7px}
+.device p {font-size:12px;color:var(--muted);margin:0}
+.tag {
+ font-size:10px;padding:6px 9px;border-radius:20px;
+ background:#173d39;color:var(--green);white-space:nowrap;
 }
-small { color: #94a3b8; }
+.tag.warn {background:#46361a;color:var(--orange)}
+.btn {
+ background:#087eae;color:white;border:0;
+ border-radius:7px;padding:11px 16px;
+ cursor:pointer;margin-top:13px;
+}
+.btn:hover {background:#069bd4}
+button:focus,input:focus,select:focus {outline:2px solid var(--blue)}
+input,select {
+ background:#0c1929;color:var(--text);
+ border:1px solid var(--line);padding:11px;
+ border-radius:7px;width:100%;margin-top:8px;
+}
+.page {display:none}
+.page.active {display:block}
+.result {
+ margin-top:15px;padding:15px;
+ background:#0c1d2d;border-left:3px solid var(--blue);
+ border-radius:5px;line-height:1.7;font-size:13px;
+}
+.muted {color:var(--muted);font-size:12px;line-height:1.6}
+.footer {color:#647b94;font-size:11px;margin-top:35px}
+@media(max-width:700px) {
+ .layout {display:block}
+ .sidebar {width:100%;padding:15px}
+ .sidebar-footer {display:none}
+ .nav {display:flex;flex-wrap:wrap;gap:4px}
+ .navtitle {margin-top:15px}
+ .nav button {width:auto;padding:9px;font-size:12px}
+ main {padding:18px}
+}
 </style>
 </head>
 <body>
+<div class="layout">
 
-<h1>Biomedical Diagnostics</h1>
-<p>Medical Equipment Troubleshooting Assistant</p>
-<small>Version 1.0 | Educational simulator</small>
+<aside class="sidebar">
+  <div class="brand">BIO<span class="blue">MED</span> HUB
+    <small>ENGINEERING INTELLIGENCE</small>
+  </div>
 
-<div class="card">
-  <h2>Diagnostic Scenario</h2>
-  <p>Equipment: Steam Autoclave</p>
-  <p>Symptom: Jacket pressure is not increasing.</p>
+  <div class="navtitle">MAIN MENU</div>
+  <div class="nav">
+    <button class="active" onclick="showPage('dashboard',this)">▦ Dashboard</button>
+    <button onclick="showPage('equipment',this)">▣ Equipment</button>
+    <button onclick="showPage('diagnostics',this)">⌕ Diagnostics</button>
+    <button onclick="showPage('mediawel',this)">⚙ MEDIAWEL 30</button>
+    <button onclick="showPage('history',this)">◷ Maintenance History</button>
+    <button onclick="showPage('ai',this)">✦ AI Assistant</button>
+  </div>
 
-  <h3>What would you check first?</h3>
+  <div class="sidebar-footer">
+    BIOMEDICAL ENGINEERING HUB<br>
+    Personal engineering project<br>
+    Version 2.0 · 2026
+  </div>
+</aside>
 
-  <button onclick="diagnose(1)">Power supply</button>
-  <button onclick="diagnose(2)">Heating system</button>
-  <button onclick="diagnose(3)">Pressure sensor</button>
+<main>
+  <div class="top">
+    <div>
+      <h1 id="pageTitle">Engineering Dashboard</h1>
+      <p>Medical Equipment Intelligence & Maintenance Platform</p>
+    </div>
+    <div class="status">● SYSTEM ONLINE</div>
+  </div>
 
-  <div id="result"></div>
+  <section id="dashboard" class="page active">
+    <div class="section">
+      <h2>Overview</h2>
+      <div class="grid">
+        <div class="card">
+          <small>Equipment registered</small>
+          <div class="metric blue">03</div>
+          <small>Demo equipment records</small>
+        </div>
+        <div class="card">
+          <small>Diagnostic modules</small>
+          <div class="metric green">02</div>
+          <small>Available scenarios</small>
+        </div>
+        <div class="card">
+          <small>Open service cases</small>
+          <div class="metric orange">01</div>
+          <small>Demo case only</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Equipment overview</h2>
+      <div class="grid">
+        <div class="card device">
+          <div><h3>MEDIAWEL 30</h3><p>Histology tissue processor</p></div>
+          <span class="tag warn">Review</span>
+        </div>
+        <div class="card device">
+          <div><h3>Leica CV5030</h3><p>Coverslipper</p></div>
+          <span class="tag">Registered</span>
+        </div>
+        <div class="card device">
+          <div><h3>Diode Laser</h3><p>Aesthetic equipment</p></div>
+          <span class="tag">Registered</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section card">
+      <h2>Engineering workspace</h2>
+      <p class="muted">A centralized workspace for equipment diagnostics, technical documentation, service history and engineering knowledge.</p>
+      <button class="btn" onclick="showPage('diagnostics')">Open diagnostics →</button>
+    </div>
+  </section>
+
+  <section id="equipment" class="page">
+    <div class="section">
+      <h2>Equipment Registry</h2>
+      <input id="search" placeholder="Search equipment..." oninput="filterEquipment()">
+      <div id="equipmentList" class="grid" style="margin-top:15px">
+        <div class="card equipment-item"><h3>MEDIAWEL 30</h3><p class="muted">Histology · Tissue processor</p><span class="tag warn">Review</span></div>
+        <div class="card equipment-item"><h3>Leica CV5030</h3><p class="muted">Pathology · Coverslipper</p><span class="tag">Registered</span></div>
+        <div class="card equipment-item"><h3>Diode Laser</h3><p class="muted">Aesthetic · Laser system</p><span class="tag">Registered</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="diagnostics" class="page">
+    <div class="section card">
+      <h2>Diagnostic Decision Support</h2>
+      <p class="muted">Select a symptom to explore a structured educational diagnostic pathway.</p>
+      <label for="symptom">Equipment symptom</label>
+      <select id="symptom">
+        <option value="pressure">Jacket pressure does not increase</option>
+        <option value="temperature">Temperature does not reach setpoint</option>
+        <option value="leak">Water or steam leakage</option>
+        <option value="shutdown">Unexpected equipment shutdown</option>
+      </select>
+      <button class="btn" onclick="runDiagnostic()">Analyze symptom</button>
+      <div id="diagnosticResult"></div>
+    </div>
+  </section>
+
+  <section id="mediawel" class="page">
+    <div class="section">
+      <h2>MEDIAWEL 30 · Technical Module</h2>
+      <div class="grid">
+        <div class="card"><small>Equipment type</small><div class="metric blue" style="font-size:19px">Tissue Processor</div></div>
+        <div class="card"><small>Diagnostic focus</small><div class="metric" style="font-size:19px">Pressure / Steam</div></div>
+      </div>
+      <div class="card" style="margin-top:15px">
+        <h3>Diagnostic knowledge base</h3>
+        <p class="muted">Future module: manual-supported fault analysis, pressure behavior, heating, cooling, valves, condenser and sensor systems.</p>
+        <button class="btn" onclick="showPage('diagnostics')">Open diagnostic tool</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="history" class="page">
+    <div class="section card">
+      <h2>Maintenance History</h2>
+      <p class="muted">No verified service records have been entered yet.</p>
+      <p class="muted">Future functions: date, equipment serial number, reported symptom, confirmed cause, repair, replaced parts and test results.</p>
+    </div>
+  </section>
+
+  <section id="ai" class="page">
+    <div class="section card">
+      <h2>AI Engineering Assistant</h2>
+      <span class="tag warn">Coming soon</span>
+      <p class="muted">The future AI module will analyze uploaded service manuals and help engineers navigate troubleshooting procedures.</p>
+      <p class="muted">Knowledge will be separated into:</p>
+      <p class="green">✓ Confirmed facts from service manuals</p>
+      <p class="orange">△ Engineering hypotheses requiring verification</p>
+      <p class="muted">No AI connection is active in this demo version.</p>
+    </div>
+  </section>
+
+  <div class="footer">
+    BIOMEDICAL ENGINEERING HUB · EDUCATIONAL PROTOTYPE<br>
+    Always follow the manufacturer's service manual and safety procedures.
+  </div>
+</main>
 </div>
 
 <script>
-function diagnose(choice) {
-  const result = document.getElementById("result");
-
-  if (choice === 1) {
-    result.innerHTML =
-      "<b>Step 1: Electrical inspection</b><br>" +
-      "Check the incoming voltage and power supply.<br>" +
-      "Confirm that the control system is powered.<br>" +
-      "<br>Next: Check whether the heater receives power.";
-  }
-
-  if (choice === 2) {
-    result.innerHTML =
-      "<b>Step 1: Heating system</b><br>" +
-      "Check the heater command, electrical supply and heating status.<br>" +
-      "Compare actual temperature with the setpoint.";
-  }
-
-  if (choice === 3) {
-    result.innerHTML =
-      "<b>Step 1: Pressure measurement</b><br>" +
-      "Compare the displayed pressure with an independent measurement.<br>" +
-      "Inspect sensor wiring and signal connections.";
-  }
+function showPage(id,button) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+  if(button) button.classList.add('active');
+  const titles = {
+    dashboard:'Engineering Dashboard',
+    equipment:'Equipment Registry',
+    diagnostics:'Diagnostic Center',
+    mediawel:'MEDIAWEL 30 Module',
+    history:'Maintenance History',
+    ai:'AI Assistant'
+  };
+  document.getElementById('pageTitle').textContent=titles[id];
+}
+function filterEquipment() {
+  const q=document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.equipment-item').forEach(item=>{
+    item.style.display=item.textContent.toLowerCase().includes(q)?'':'none';
+  });
+}
+function runDiagnostic() {
+  const symptom=document.getElementById('symptom').value;
+  const results={
+    pressure:{
+      title:'Jacket pressure does not increase',
+      steps:[
+        'Record the cycle phase and displayed pressure values.',
+        'Compare the pressure behavior with the manufacturer service documentation.',
+        'Review the heating command, sensor readings and relevant valve states.',
+        'Check for alarms or abnormal pressure trends in the available logs.'
+      ]
+    },
+    temperature:{
+      title:'Temperature does not reach setpoint',
+      steps:[
+        'Record actual temperature, setpoint and cycle phase.',
+        'Review the heating status and recorded temperature trend.',
+        'Compare sensor readings with the approved service procedure.',
+        'Check alarms and relevant heating-system documentation.'
+      ]
+    },
+    leak:{
+      title:'Water or steam leakage',
+      steps:[
+        'Document the exact location and cycle phase.',
+        'Stop operation and apply the manufacturer's safety procedure if leakage presents a hazard.',
+        'Inspect the relevant system only under approved isolation procedures.',
+        'Record affected components and findings.'
+      ]
+    },
+    shutdown:{
+      title:'Unexpected equipment shutdown',
+      steps:[
+        'Record the exact shutdown time and displayed error.',
+        'Review the power supply and event log according to the service manual.',
+        'Check whether the shutdown coincides with heating, cooling or another process.',
+        'Document findings before any intervention.'
+      ]
+    }
+  };
+  const data=results[symptom];
+  document.getElementById('diagnosticResult').innerHTML=
+    '<div class="result"><b>'+data.title+'</b><br><br>'+
+    '<span class="orange">Educational diagnostic checklist — not a confirmed fault diagnosis.</span><br><br>'+
+    data.steps.map((s,i)=>(i+1)+'. '+s).join('<br><br>')+
+    '<br><br><b class="green">Next:</b> Verify each step against the correct equipment service manual and safety procedure.</div>';
 }
 </script>
-
 </body>
 </html>
