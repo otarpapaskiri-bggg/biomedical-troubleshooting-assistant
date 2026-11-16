@@ -1,339 +1,567 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Biomedical Engineering Hub</title>
+
 <style>
 :root {
-  --bg:#0b1220;
-  --panel:#131f31;
-  --panel2:#19283d;
-  --line:#263950;
-  --text:#e7f0fa;
-  --muted:#8fa5bc;
-  --blue:#38bdf8;
-  --green:#34d399;
-  --orange:#fbbf24;
+  --bg: #f4f6fa;
+  --panel: #ffffff;
+  --text: #182230;
+  --muted: #718096;
+  --primary: #2457d6;
+  --border: #e5e9f0;
+  --sidebar: #14213d;
 }
-* {box-sizing:border-box}
+
+* { box-sizing: border-box; }
+
 body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
-.layout {display:flex;min-height:100vh}
+
+.app { display: flex; min-height: 100vh; }
+
 .sidebar {
-  width:245px;
-  background:#0e1929;
-  border-right:1px solid var(--line);
-  padding:25px 17px;
-  flex-shrink:0;
+  width: 245px;
+  background: var(--sidebar);
+  color: white;
+  padding: 25px 16px;
+  flex-shrink: 0;
 }
-.brand {font-size:19px;font-weight:bold;color:var(--blue)}
-.brand small {display:block;color:var(--muted);font-size:10px;margin-top:7px;letter-spacing:2px}
-.navtitle {font-size:10px;color:#71869d;margin:35px 10px 12px;letter-spacing:2px}
-.nav button {
-  display:block;width:100%;text-align:left;
-  padding:13px 12px;margin:5px 0;
-  border:0;border-radius:7px;background:transparent;
-  color:#a9bbcf;cursor:pointer;font-size:14px;
+
+.logo {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 5px 10px 35px;
+  line-height: 1.5;
 }
-.nav button:hover,.nav button.active {
-  background:#1a3048;color:var(--blue);
+
+.logo span { color: #7da5ff; }
+
+.nav-label {
+  color: #91a0bb;
+  font-size: 11px;
+  margin: 25px 10px 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-.sidebar-footer {margin-top:45px;color:#71869d;font-size:11px;line-height:1.8}
-main {flex:1;padding:30px;min-width:0}
-.top {
-  display:flex;justify-content:space-between;
-  align-items:center;gap:15px;flex-wrap:wrap;
-  border-bottom:1px solid var(--line);padding-bottom:20px;
+
+.nav-btn {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #d5deef;
+  padding: 12px;
+  text-align: left;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 3px 0;
+  font-size: 14px;
 }
-.top h1 {font-size:23px;margin:0}
-.top p {color:var(--muted);font-size:12px;margin:7px 0 0}
-.status {color:var(--green);font-size:12px}
-.section {margin-top:27px}
-.section h2 {font-size:17px;margin-bottom:15px}
+
+.nav-btn:hover, .nav-btn.active {
+  background: #263b62;
+  color: white;
+}
+
+.main { flex: 1; min-width: 0; }
+
+.topbar {
+  height: 72px;
+  background: white;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+}
+
+.topbar small { color: var(--muted); }
+
+.content { padding: 30px; max-width: 1400px; }
+
+h1 { margin: 0 0 8px; font-size: 27px; }
+.subtitle { color: var(--muted); margin-bottom: 25px; }
+
 .grid {
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
- gap:14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+  margin-bottom: 25px;
 }
+
 .card {
- background:var(--panel);
- border:1px solid var(--line);
- padding:19px;border-radius:11px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
 }
-.card small {color:var(--muted)}
-.metric {font-size:29px;font-weight:bold;margin:13px 0}
-.blue {color:var(--blue)}
-.green {color:var(--green)}
-.orange {color:var(--orange)}
-.device {
- display:flex;justify-content:space-between;gap:12px;
- align-items:center;
+
+.metric-label { color: var(--muted); font-size: 13px; }
+.metric-value { font-size: 30px; font-weight: bold; margin-top: 12px; }
+
+.section-title {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 16px;
 }
-.device h3 {font-size:15px;margin:0 0 7px}
-.device p {font-size:12px;color:var(--muted);margin:0}
-.tag {
- font-size:10px;padding:6px 9px;border-radius:20px;
- background:#173d39;color:var(--green);white-space:nowrap;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
 }
-.tag.warn {background:#46361a;color:var(--orange)}
+
+th, td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th { color: var(--muted); font-weight: 600; }
+.table-wrap { overflow-x: auto; }
+
+.status {
+  display: inline-block;
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  background: #e6f5ec;
+  color: #21834b;
+}
+
+.status.warning { background: #fff2d9; color: #a66a00; }
+.status.danger { background: #fde8e8; color: #bd3333; }
+
 .btn {
- background:#087eae;color:white;border:0;
- border-radius:7px;padding:11px 16px;
- cursor:pointer;margin-top:13px;
+  border: 0;
+  background: var(--primary);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 13px;
 }
-.btn:hover {background:#069bd4}
-button:focus,input:focus,select:focus {outline:2px solid var(--blue)}
-input,select {
- background:#0c1929;color:var(--text);
- border:1px solid var(--line);padding:11px;
- border-radius:7px;width:100%;margin-top:8px;
+
+.btn:hover { background: #1743b5; }
+
+.btn.secondary {
+  background: #e9eef9;
+  color: #2457d6;
 }
-.page {display:none}
-.page.active {display:block}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+input, select, textarea {
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 13px;
+  background: white;
+  color: var(--text);
+}
+
+input { min-width: 200px; }
+
+.page { display: none; }
+.page.active { display: block; }
+
+.diagnostic {
+  border: 1px solid var(--border);
+  padding: 17px;
+  border-radius: 9px;
+  margin-bottom: 12px;
+  background: white;
+}
+
+.diagnostic h3 { margin: 0 0 8px; font-size: 15px; }
+.diagnostic p { color: var(--muted); font-size: 13px; }
+
 .result {
- margin-top:15px;padding:15px;
- background:#0c1d2d;border-left:3px solid var(--blue);
- border-radius:5px;line-height:1.7;font-size:13px;
+  margin-top: 12px;
+  padding: 12px;
+  background: #edf3ff;
+  border-radius: 8px;
+  display: none;
+  font-size: 13px;
+  line-height: 1.6;
 }
-.muted {color:var(--muted);font-size:12px;line-height:1.6}
-.footer {color:#647b94;font-size:11px;margin-top:35px}
-@media(max-width:700px) {
- .layout {display:block}
- .sidebar {width:100%;padding:15px}
- .sidebar-footer {display:none}
- .nav {display:flex;flex-wrap:wrap;gap:4px}
- .navtitle {margin-top:15px}
- .nav button {width:auto;padding:9px;font-size:12px}
- main {padding:18px}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-grid input, .form-grid select { width: 100%; }
+
+@media(max-width: 750px) {
+  .app { display: block; }
+  .sidebar { width: 100%; padding: 12px; }
+  .logo { margin: 5px 10px 12px; }
+  .nav-label { display: none; }
+  .nav-btn { width: auto; padding: 9px; }
+  .topbar { padding: 0 15px; }
+  .content { padding: 18px; }
+  .form-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
+
 <body>
-<div class="layout">
+<div class="app">
 
 <aside class="sidebar">
-  <div class="brand">BIO<span class="blue">MED</span> HUB
-    <small>ENGINEERING INTELLIGENCE</small>
-  </div>
+  <div class="logo">BIOMED <span>ENGINEERING</span></div>
 
-  <div class="navtitle">MAIN MENU</div>
-  <div class="nav">
-    <button class="active" onclick="showPage('dashboard',this)">▦ Dashboard</button>
-    <button onclick="showPage('equipment',this)">▣ Equipment</button>
-    <button onclick="showPage('diagnostics',this)">⌕ Diagnostics</button>
-    <button onclick="showPage('mediawel',this)">⚙ MEDIAWEL 30</button>
-    <button onclick="showPage('history',this)">◷ Maintenance History</button>
-    <button onclick="showPage('ai',this)">✦ AI Assistant</button>
-  </div>
+  <div class="nav-label">Workspace</div>
+  <button class="nav-btn active" data-page="dashboard">▦ Dashboard</button>
+  <button class="nav-btn" data-page="equipment">▣ Equipment</button>
+  <button class="nav-btn" data-page="maintenance">⚙ Maintenance</button>
 
-  <div class="sidebar-footer">
-    BIOMEDICAL ENGINEERING HUB<br>
-    Personal engineering project<br>
-    Version 2.0 · 2026
-  </div>
+  <div class="nav-label">Engineering</div>
+  <button class="nav-btn" data-page="diagnostics">⌕ Diagnostics</button>
+  <button class="nav-btn" data-page="knowledge">▤ Knowledge Base</button>
+
+  <div class="nav-label">System</div>
+  <button class="nav-btn" data-page="settings">⚙ Settings</button>
 </aside>
 
-<main>
-  <div class="top">
-    <div>
-      <h1 id="pageTitle">Engineering Dashboard</h1>
-      <p>Medical Equipment Intelligence & Maintenance Platform</p>
-    </div>
-    <div class="status">● SYSTEM ONLINE</div>
-  </div>
+<main class="main">
+  <header class="topbar">
+    <strong id="pageTitle">Dashboard</strong>
+    <small>Biomedical Engineering Hub · Business Edition</small>
+  </header>
 
-  <section id="dashboard" class="page active">
-    <div class="section">
-      <h2>Overview</h2>
+  <div class="content">
+
+    <section class="page active" id="dashboard">
+      <h1>Dashboard</h1>
+      <div class="subtitle">Overview of your engineering operations</div>
+
       <div class="grid">
         <div class="card">
-          <small>Equipment registered</small>
-          <div class="metric blue">03</div>
-          <small>Demo equipment records</small>
+          <div class="metric-label">Total Equipment</div>
+          <div class="metric-value" id="totalEquipment">4</div>
         </div>
         <div class="card">
-          <small>Diagnostic modules</small>
-          <div class="metric green">02</div>
-          <small>Available scenarios</small>
+          <div class="metric-label">Operational</div>
+          <div class="metric-value" id="operational">3</div>
         </div>
         <div class="card">
-          <small>Open service cases</small>
-          <div class="metric orange">01</div>
-          <small>Demo case only</small>
+          <div class="metric-label">Under Maintenance</div>
+          <div class="metric-value" id="underMaintenance">1</div>
+        </div>
+        <div class="card">
+          <div class="metric-label">Service Records</div>
+          <div class="metric-value" id="totalRecords">2</div>
         </div>
       </div>
-    </div>
 
-    <div class="section">
-      <h2>Equipment overview</h2>
+      <div class="card">
+        <div class="section-title">Recent Activity</div>
+        <div id="recentActivity">No recent activity.</div>
+      </div>
+    </section>
+
+    <section class="page" id="equipment">
+      <h1>Equipment Management</h1>
+      <div class="subtitle">Manage your medical equipment inventory</div>
+
+      <div class="toolbar">
+        <input id="equipmentSearch" placeholder="Search equipment...">
+        <button class="btn" id="addEquipmentBtn">+ Add Equipment</button>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Equipment</th>
+                <th>Category</th>
+                <th>Location</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="equipmentTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="maintenance">
+      <h1>Maintenance</h1>
+      <div class="subtitle">Service history and maintenance records</div>
+
+      <div class="toolbar">
+        <button class="btn" id="addRecordBtn">+ Add Service Record</button>
+      </div>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Equipment</th>
+                <th>Work Performed</th>
+                <th>Technician</th>
+              </tr>
+            </thead>
+            <tbody id="maintenanceTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="diagnostics">
+      <h1>Diagnostic Engine</h1>
+      <div class="subtitle">Generic engineering troubleshooting workflows</div>
+
+      <div class="diagnostic">
+        <h3>Equipment does not power on</h3>
+        <p>Basic electrical troubleshooting sequence.</p>
+        <button class="btn secondary" data-diagnostic="power">Start diagnostic</button>
+        <div class="result" id="result-power">
+          <strong>Step 1:</strong> Check the external power source.<br>
+          <strong>Step 2:</strong> Inspect the power cable and connector.<br>
+          <strong>Step 3:</strong> Verify the input voltage against the manufacturer's specifications.<br>
+          <strong>Step 4:</strong> If safe and authorized, inspect the internal power supply and protection devices.<br>
+          <strong>Important:</strong> Disconnect power before internal inspection. Follow the service manual.
+        </div>
+      </div>
+
+      <div class="diagnostic">
+        <h3>Equipment shuts down unexpectedly</h3>
+        <p>Basic power, temperature and protection checks.</p>
+        <button class="btn secondary" data-diagnostic="shutdown">Start diagnostic</button>
+        <div class="result" id="result-shutdown">
+          <strong>Step 1:</strong> Record the exact shutdown conditions.<br>
+          <strong>Step 2:</strong> Check the power supply and input stability.<br>
+          <strong>Step 3:</strong> Review temperature and cooling system operation.<br>
+          <strong>Step 4:</strong> Check alarms and error logs.<br>
+          <strong>Step 5:</strong> Compare findings with the manufacturer's service documentation.
+        </div>
+      </div>
+
+      <div class="diagnostic">
+        <h3>Abnormal temperature</h3>
+        <p>Basic thermal system troubleshooting.</p>
+        <button class="btn secondary" data-diagnostic="temperature">Start diagnostic</button>
+        <div class="result" id="result-temperature">
+          <strong>Step 1:</strong> Record the measured and target temperatures.<br>
+          <strong>Step 2:</strong> Check temperature sensor connections.<br>
+          <strong>Step 3:</strong> Inspect airflow, fans and cooling paths.<br>
+          <strong>Step 4:</strong> Review alarms and temperature trends.<br>
+          <strong>Step 5:</strong> Verify sensor accuracy using an approved procedure.
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="knowledge">
+      <h1>Knowledge Base</h1>
+      <div class="subtitle">Central place for engineering knowledge</div>
+
       <div class="grid">
-        <div class="card device">
-          <div><h3>MEDIAWEL 30</h3><p>Histology tissue processor</p></div>
-          <span class="tag warn">Review</span>
+        <div class="card">
+          <div class="section-title">Service Documentation</div>
+          <p class="metric-label">Organize manuals and technical documents.</p>
         </div>
-        <div class="card device">
-          <div><h3>Leica CV5030</h3><p>Coverslipper</p></div>
-          <span class="tag">Registered</span>
+        <div class="card">
+          <div class="section-title">Technical Notes</div>
+          <p class="metric-label">Save engineering observations and solutions.</p>
         </div>
-        <div class="card device">
-          <div><h3>Diode Laser</h3><p>Aesthetic equipment</p></div>
-          <span class="tag">Registered</span>
+        <div class="card">
+          <div class="section-title">Diagnostic Procedures</div>
+          <p class="metric-label">Build reusable troubleshooting workflows.</p>
         </div>
       </div>
-    </div>
+      <p class="metric-label">Knowledge Base storage will be developed in a future version.</p>
+    </section>
 
-    <div class="section card">
-      <h2>Engineering workspace</h2>
-      <p class="muted">A centralized workspace for equipment diagnostics, technical documentation, service history and engineering knowledge.</p>
-      <button class="btn" onclick="showPage('diagnostics')">Open diagnostics →</button>
-    </div>
-  </section>
-
-  <section id="equipment" class="page">
-    <div class="section">
-      <h2>Equipment Registry</h2>
-      <input id="search" placeholder="Search equipment..." oninput="filterEquipment()">
-      <div id="equipmentList" class="grid" style="margin-top:15px">
-        <div class="card equipment-item"><h3>MEDIAWEL 30</h3><p class="muted">Histology · Tissue processor</p><span class="tag warn">Review</span></div>
-        <div class="card equipment-item"><h3>Leica CV5030</h3><p class="muted">Pathology · Coverslipper</p><span class="tag">Registered</span></div>
-        <div class="card equipment-item"><h3>Diode Laser</h3><p class="muted">Aesthetic · Laser system</p><span class="tag">Registered</span></div>
+    <section class="page" id="settings">
+      <h1>Settings</h1>
+      <div class="subtitle">Platform configuration</div>
+      <div class="card">
+        <div class="section-title">Business Edition</div>
+        <p>Platform: Biomedical Engineering Hub</p>
+        <p>Version: 0.1 Prototype</p>
+        <p>Data storage: Browser session only in this prototype.</p>
+        <p class="metric-label">This version does not have user accounts, cloud storage or access control.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="diagnostics" class="page">
-    <div class="section card">
-      <h2>Diagnostic Decision Support</h2>
-      <p class="muted">Select a symptom to explore a structured educational diagnostic pathway.</p>
-      <label for="symptom">Equipment symptom</label>
-      <select id="symptom">
-        <option value="pressure">Jacket pressure does not increase</option>
-        <option value="temperature">Temperature does not reach setpoint</option>
-        <option value="leak">Water or steam leakage</option>
-        <option value="shutdown">Unexpected equipment shutdown</option>
-      </select>
-      <button class="btn" onclick="runDiagnostic()">Analyze symptom</button>
-      <div id="diagnosticResult"></div>
-    </div>
-  </section>
-
-  <section id="mediawel" class="page">
-    <div class="section">
-      <h2>MEDIAWEL 30 · Technical Module</h2>
-      <div class="grid">
-        <div class="card"><small>Equipment type</small><div class="metric blue" style="font-size:19px">Tissue Processor</div></div>
-        <div class="card"><small>Diagnostic focus</small><div class="metric" style="font-size:19px">Pressure / Steam</div></div>
-      </div>
-      <div class="card" style="margin-top:15px">
-        <h3>Diagnostic knowledge base</h3>
-        <p class="muted">Future module: manual-supported fault analysis, pressure behavior, heating, cooling, valves, condenser and sensor systems.</p>
-        <button class="btn" onclick="showPage('diagnostics')">Open diagnostic tool</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="history" class="page">
-    <div class="section card">
-      <h2>Maintenance History</h2>
-      <p class="muted">No verified service records have been entered yet.</p>
-      <p class="muted">Future functions: date, equipment serial number, reported symptom, confirmed cause, repair, replaced parts and test results.</p>
-    </div>
-  </section>
-
-  <section id="ai" class="page">
-    <div class="section card">
-      <h2>AI Engineering Assistant</h2>
-      <span class="tag warn">Coming soon</span>
-      <p class="muted">The future AI module will analyze uploaded service manuals and help engineers navigate troubleshooting procedures.</p>
-      <p class="muted">Knowledge will be separated into:</p>
-      <p class="green">✓ Confirmed facts from service manuals</p>
-      <p class="orange">△ Engineering hypotheses requiring verification</p>
-      <p class="muted">No AI connection is active in this demo version.</p>
-    </div>
-  </section>
-
-  <div class="footer">
-    BIOMEDICAL ENGINEERING HUB · EDUCATIONAL PROTOTYPE<br>
-    Always follow the manufacturer's service manual and safety procedures.
   </div>
 </main>
 </div>
 
 <script>
-function showPage(id,button) {
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
-  if(button) button.classList.add('active');
-  const titles = {
-    dashboard:'Engineering Dashboard',
-    equipment:'Equipment Registry',
-    diagnostics:'Diagnostic Center',
-    mediawel:'MEDIAWEL 30 Module',
-    history:'Maintenance History',
-    ai:'AI Assistant'
-  };
-  document.getElementById('pageTitle').textContent=titles[id];
+const equipment = [
+  {name:"Laboratory Analyzer", category:"Laboratory", location:"Laboratory 1", status:"Operational"},
+  {name:"Autoclave", category:"Sterilization", location:"Sterilization Room", status:"Operational"},
+  {name:"Diode Laser System", category:"Aesthetic", location:"Room 2", status:"Maintenance"},
+  {name:"Microscope", category:"Laboratory", location:"Laboratory 2", status:"Operational"}
+];
+
+const records = [
+  {date:"2026-11-10", equipment:"Laboratory Analyzer", work:"Preventive maintenance", technician:"Engineer"},
+  {date:"2026-11-12", equipment:"Microscope", work:"Optical inspection", technician:"Engineer"}
+];
+
+function showPage(pageId) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.querySelectorAll(".nav-btn").forEach(button => {
+    button.classList.toggle("active", button.dataset.page === pageId);
+  });
+
+  const page = document.getElementById(pageId);
+  if (!page) return;
+
+  page.classList.add("active");
+  document.getElementById("pageTitle").textContent =
+    document.querySelector(`[data-page="${pageId}"]`).textContent.trim();
 }
-function filterEquipment() {
-  const q=document.getElementById('search').value.toLowerCase();
-  document.querySelectorAll('.equipment-item').forEach(item=>{
-    item.style.display=item.textContent.toLowerCase().includes(q)?'':'none';
+
+document.querySelectorAll(".nav-btn").forEach(button => {
+  button.addEventListener("click", () => showPage(button.dataset.page));
+});
+
+function renderEquipment(filter = "") {
+  const tbody = document.getElementById("equipmentTable");
+  tbody.innerHTML = "";
+
+  equipment
+    .filter(item => (item.name + item.category + item.location)
+    .toLowerCase().includes(filter.toLowerCase()))
+    .forEach(item => {
+      const row = document.createElement("tr");
+      const statusClass = item.status === "Maintenance" ? "warning" : "";
+      row.innerHTML = `
+        <td>${escapeHTML(item.name)}</td>
+        <td>${escapeHTML(item.category)}</td>
+        <td>${escapeHTML(item.location)}</td>
+        <td><span class="status ${statusClass}">${escapeHTML(item.status)}</span></td>
+      `;
+      tbody.appendChild(row);
+    });
+}
+
+function renderMaintenance() {
+  const tbody = document.getElementById("maintenanceTable");
+  tbody.innerHTML = "";
+
+  records.forEach(record => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${escapeHTML(record.date)}</td>
+      <td>${escapeHTML(record.equipment)}</td>
+      <td>${escapeHTML(record.work)}</td>
+      <td>${escapeHTML(record.technician)}</td>
+    `;
+    tbody.appendChild(row);
   });
 }
-function runDiagnostic() {
-  const symptom=document.getElementById('symptom').value;
-  const results={
-    pressure:{
-      title:'Jacket pressure does not increase',
-      steps:[
-        'Record the cycle phase and displayed pressure values.',
-        'Compare the pressure behavior with the manufacturer service documentation.',
-        'Review the heating command, sensor readings and relevant valve states.',
-        'Check for alarms or abnormal pressure trends in the available logs.'
-      ]
-    },
-    temperature:{
-      title:'Temperature does not reach setpoint',
-      steps:[
-        'Record actual temperature, setpoint and cycle phase.',
-        'Review the heating status and recorded temperature trend.',
-        'Compare sensor readings with the approved service procedure.',
-        'Check alarms and relevant heating-system documentation.'
-      ]
-    },
-    leak:{
-      title:'Water or steam leakage',
-      steps:[
-        'Document the exact location and cycle phase.',
-        'Stop operation and apply the manufacturer's safety procedure if leakage presents a hazard.',
-        'Inspect the relevant system only under approved isolation procedures.',
-        'Record affected components and findings.'
-      ]
-    },
-    shutdown:{
-      title:'Unexpected equipment shutdown',
-      steps:[
-        'Record the exact shutdown time and displayed error.',
-        'Review the power supply and event log according to the service manual.',
-        'Check whether the shutdown coincides with heating, cooling or another process.',
-        'Document findings before any intervention.'
-      ]
-    }
-  };
-  const data=results[symptom];
-  document.getElementById('diagnosticResult').innerHTML=
-    '<div class="result"><b>'+data.title+'</b><br><br>'+
-    '<span class="orange">Educational diagnostic checklist — not a confirmed fault diagnosis.</span><br><br>'+
-    data.steps.map((s,i)=>(i+1)+'. '+s).join('<br><br>')+
-    '<br><br><b class="green">Next:</b> Verify each step against the correct equipment service manual and safety procedure.</div>';
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;", "<":"&lt;", ">":"&gt;",
+    '"':"&quot;", "'":"&#39;"
+  })[char]);
 }
+
+function updateDashboard() {
+  document.getElementById("totalEquipment").textContent = equipment.length;
+  document.getElementById("operational").textContent =
+    equipment.filter(item => item.status === "Operational").length;
+  document.getElementById("underMaintenance").textContent =
+    equipment.filter(item => item.status === "Maintenance").length;
+  document.getElementById("totalRecords").textContent = records.length;
+
+  document.getElementById("recentActivity").textContent =
+    records.length
+      ? records[records.length - 1].date + " — " +
+        records[records.length - 1].work
+      : "No recent activity.";
+}
+
+document.getElementById("equipmentSearch").addEventListener("input", event => {
+  renderEquipment(event.target.value);
+});
+
+document.getElementById("addEquipmentBtn").addEventListener("click", () => {
+  const name = prompt("Equipment name:");
+  if (!name || !name.trim()) return;
+
+  const category = prompt("Category:") || "Other";
+  const location = prompt("Location:") || "Not specified";
+
+  equipment.push({
+    name: name.trim(),
+    category: category.trim(),
+    location: location.trim(),
+    status: "Operational"
+  });
+
+  renderEquipment(document.getElementById("equipmentSearch").value);
+  updateDashboard();
+  alert("Equipment added successfully.");
+});
+
+document.getElementById("addRecordBtn").addEventListener("click", () => {
+  if (equipment.length === 0) {
+    alert("Add equipment first.");
+    return;
+  }
+
+  const equipmentName = prompt(
+    "Equipment name:\n" + equipment.map(item => item.name).join("\n")
+  );
+  if (!equipmentName) return;
+
+  const work = prompt("Work performed:");
+  if (!work || !work.trim()) return;
+
+  records.push({
+    date: new Date().toISOString().slice(0,10),
+    equipment: equipmentName.trim(),
+    work: work.trim(),
+    technician: "Engineer"
+  });
+
+  renderMaintenance();
+  updateDashboard();
+  alert("Service record added.");
+});
+
+document.querySelectorAll("[data-diagnostic]").forEach(button => {
+  button.addEventListener("click", () => {
+    const result = document.getElementById(
+      "result-" + button.dataset.diagnostic
+    );
+    result.style.display =
+      result.style.display === "block" ? "none" : "block";
+  });
+});
+
+renderEquipment();
+renderMaintenance();
+updateDashboard();
 </script>
+
 </body>
 </html>
