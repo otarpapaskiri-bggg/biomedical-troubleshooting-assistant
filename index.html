@@ -7,222 +7,256 @@
 
 <style>
 :root {
-  --bg: #f4f6fa;
-  --panel: #ffffff;
-  --text: #182230;
-  --muted: #718096;
-  --primary: #2457d6;
-  --border: #e5e9f0;
-  --sidebar: #14213d;
+  --bg:#f4f6fa;
+  --panel:#ffffff;
+  --text:#182230;
+  --muted:#718096;
+  --primary:#2457d6;
+  --border:#e5e9f0;
+  --sidebar:#14213d;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing:border-box; }
 
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-.app { display: flex; min-height: 100vh; }
+.app { display:flex; min-height:100vh; }
 
 .sidebar {
-  width: 245px;
-  background: var(--sidebar);
-  color: white;
-  padding: 25px 16px;
-  flex-shrink: 0;
+  width:245px;
+  background:var(--sidebar);
+  color:white;
+  padding:25px 16px;
+  flex-shrink:0;
 }
 
 .logo {
-  font-size: 19px;
-  font-weight: bold;
-  margin: 5px 10px 35px;
-  line-height: 1.5;
+  font-size:19px;
+  font-weight:bold;
+  margin:5px 10px 35px;
+  line-height:1.5;
 }
 
-.logo span { color: #7da5ff; }
+.logo span { color:#7da5ff; }
 
 .nav-label {
-  color: #91a0bb;
-  font-size: 11px;
-  margin: 25px 10px 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color:#91a0bb;
+  font-size:11px;
+  margin:25px 10px 10px;
+  text-transform:uppercase;
+  letter-spacing:1px;
 }
 
 .nav-btn {
-  width: 100%;
-  border: 0;
-  background: transparent;
-  color: #d5deef;
-  padding: 12px;
-  text-align: left;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 3px 0;
-  font-size: 14px;
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#d5deef;
+  padding:12px;
+  text-align:left;
+  border-radius:8px;
+  cursor:pointer;
+  margin:3px 0;
+  font-size:14px;
 }
 
-.nav-btn:hover, .nav-btn.active {
-  background: #263b62;
-  color: white;
+.nav-btn:hover,
+.nav-btn.active {
+  background:#263b62;
+  color:white;
 }
 
-.main { flex: 1; min-width: 0; }
+.main { flex:1; min-width:0; }
 
 .topbar {
-  height: 72px;
-  background: white;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 30px;
+  height:72px;
+  background:white;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
 }
 
-.topbar small { color: var(--muted); }
+.topbar small { color:var(--muted); }
 
-.content { padding: 30px; max-width: 1400px; }
+.content {
+  padding:30px;
+  max-width:1400px;
+}
 
-h1 { margin: 0 0 8px; font-size: 27px; }
-.subtitle { color: var(--muted); margin-bottom: 25px; }
+h1 { margin:0 0 8px; font-size:27px; }
+
+.subtitle {
+  color:var(--muted);
+  margin-bottom:25px;
+}
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 18px;
-  margin-bottom: 25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:18px;
+  margin-bottom:25px;
 }
 
 .card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:20px;
 }
 
-.metric-label { color: var(--muted); font-size: 13px; }
-.metric-value { font-size: 30px; font-weight: bold; margin-top: 12px; }
+.metric-label {
+  color:var(--muted);
+  font-size:13px;
+}
+
+.metric-value {
+  font-size:30px;
+  font-weight:bold;
+  margin-top:12px;
+}
 
 .section-title {
-  font-size: 17px;
-  font-weight: bold;
-  margin-bottom: 16px;
+  font-size:17px;
+  font-weight:bold;
+  margin-bottom:16px;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 13px;
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
 }
 
-th, td {
-  padding: 14px 12px;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
+th,td {
+  padding:14px 12px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
 }
 
-th { color: var(--muted); font-weight: 600; }
-.table-wrap { overflow-x: auto; }
+th { color:var(--muted); font-weight:600; }
+
+.table-wrap { overflow-x:auto; }
 
 .status {
-  display: inline-block;
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-size: 11px;
-  background: #e6f5ec;
-  color: #21834b;
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+  background:#e6f5ec;
+  color:#21834b;
 }
 
-.status.warning { background: #fff2d9; color: #a66a00; }
-.status.danger { background: #fde8e8; color: #bd3333; }
+.status.warning {
+  background:#fff2d9;
+  color:#a66a00;
+}
 
 .btn {
-  border: 0;
-  background: var(--primary);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 7px;
-  cursor: pointer;
-  font-size: 13px;
+  border:0;
+  background:var(--primary);
+  color:white;
+  padding:10px 16px;
+  border-radius:7px;
+  cursor:pointer;
+  font-size:13px;
 }
 
-.btn:hover { background: #1743b5; }
+.btn:hover { background:#1743b5; }
 
 .btn.secondary {
-  background: #e9eef9;
-  color: #2457d6;
+  background:#e9eef9;
+  color:#2457d6;
 }
 
 .toolbar {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
+  display:flex;
+  gap:12px;
+  margin-bottom:18px;
+  flex-wrap:wrap;
 }
 
-input, select, textarea {
-  padding: 11px;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  font-size: 13px;
-  background: white;
-  color: var(--text);
+input,select {
+  padding:11px;
+  border:1px solid var(--border);
+  border-radius:7px;
+  font-size:13px;
+  background:white;
+  color:var(--text);
 }
 
-input { min-width: 200px; }
+input { min-width:200px; }
 
-.page { display: none; }
-.page.active { display: block; }
+.page { display:none; }
+.page.active { display:block; }
 
 .diagnostic {
-  border: 1px solid var(--border);
-  padding: 17px;
-  border-radius: 9px;
-  margin-bottom: 12px;
-  background: white;
+  border:1px solid var(--border);
+  padding:17px;
+  border-radius:9px;
+  margin-bottom:12px;
+  background:white;
 }
 
-.diagnostic h3 { margin: 0 0 8px; font-size: 15px; }
-.diagnostic p { color: var(--muted); font-size: 13px; }
+.diagnostic h3 {
+  margin:0 0 8px;
+  font-size:15px;
+}
+
+.diagnostic p {
+  color:var(--muted);
+  font-size:13px;
+}
 
 .result {
-  margin-top: 12px;
-  padding: 12px;
-  background: #edf3ff;
-  border-radius: 8px;
-  display: none;
-  font-size: 13px;
-  line-height: 1.6;
+  margin-top:12px;
+  padding:12px;
+  background:#edf3ff;
+  border-radius:8px;
+  display:none;
+  font-size:13px;
+  line-height:1.8;
 }
 
 .form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
-.form-grid input, .form-grid select { width: 100%; }
+.form-grid input,.form-grid select { width:100%; }
 
-@media(max-width: 750px) {
-  .app { display: block; }
-  .sidebar { width: 100%; padding: 12px; }
-  .logo { margin: 5px 10px 12px; }
-  .nav-label { display: none; }
-  .nav-btn { width: auto; padding: 9px; }
-  .topbar { padding: 0 15px; }
-  .content { padding: 18px; }
-  .form-grid { grid-template-columns: 1fr; }
+.notice {
+  color:var(--muted);
+  font-size:12px;
+  margin-top:15px;
+}
+
+@media(max-width:750px) {
+  .app { display:block; }
+  .sidebar { width:100%; padding:12px; }
+  .logo { margin:5px 10px 12px; }
+  .nav-label { display:none; }
+  .nav-btn { width:auto; padding:9px; }
+  .topbar { padding:0 15px; }
+  .content { padding:18px; }
+  .form-grid { grid-template-columns:1fr; }
 }
 </style>
 </head>
 
 <body>
+
 <div class="app">
 
 <aside class="sidebar">
+
   <div class="logo">BIOMED <span>ENGINEERING</span></div>
 
   <div class="nav-label">Workspace</div>
@@ -236,354 +270,582 @@ input { min-width: 200px; }
 
   <div class="nav-label">System</div>
   <button class="nav-btn" data-page="settings">⚙ Settings</button>
+
 </aside>
 
 <main class="main">
-  <header class="topbar">
-    <strong id="pageTitle">Dashboard</strong>
-    <small>Biomedical Engineering Hub · Business Edition</small>
-  </header>
 
-  <div class="content">
+<header class="topbar">
+  <strong id="pageTitle">Dashboard</strong>
+  <small>Biomedical Engineering Hub · Business Edition</small>
+</header>
 
-    <section class="page active" id="dashboard">
-      <h1>Dashboard</h1>
-      <div class="subtitle">Overview of your engineering operations</div>
+<div class="content">
 
-      <div class="grid">
-        <div class="card">
-          <div class="metric-label">Total Equipment</div>
-          <div class="metric-value" id="totalEquipment">4</div>
-        </div>
-        <div class="card">
-          <div class="metric-label">Operational</div>
-          <div class="metric-value" id="operational">3</div>
-        </div>
-        <div class="card">
-          <div class="metric-label">Under Maintenance</div>
-          <div class="metric-value" id="underMaintenance">1</div>
-        </div>
-        <div class="card">
-          <div class="metric-label">Service Records</div>
-          <div class="metric-value" id="totalRecords">2</div>
-        </div>
-      </div>
+<section class="page active" id="dashboard">
 
-      <div class="card">
-        <div class="section-title">Recent Activity</div>
-        <div id="recentActivity">No recent activity.</div>
-      </div>
-    </section>
+  <h1>Dashboard</h1>
+  <div class="subtitle">Overview of your engineering operations</div>
 
-    <section class="page" id="equipment">
-      <h1>Equipment Management</h1>
-      <div class="subtitle">Manage your medical equipment inventory</div>
+  <div class="grid">
 
-      <div class="toolbar">
-        <input id="equipmentSearch" placeholder="Search equipment...">
-        <button class="btn" id="addEquipmentBtn">+ Add Equipment</button>
-      </div>
+    <div class="card">
+      <div class="metric-label">Total Equipment</div>
+      <div class="metric-value" id="totalEquipment">0</div>
+    </div>
 
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Equipment</th>
-                <th>Category</th>
-                <th>Location</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="equipmentTable"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
+    <div class="card">
+      <div class="metric-label">Operational</div>
+      <div class="metric-value" id="operational">0</div>
+    </div>
 
-    <section class="page" id="maintenance">
-      <h1>Maintenance</h1>
-      <div class="subtitle">Service history and maintenance records</div>
+    <div class="card">
+      <div class="metric-label">Under Maintenance</div>
+      <div class="metric-value" id="underMaintenance">0</div>
+    </div>
 
-      <div class="toolbar">
-        <button class="btn" id="addRecordBtn">+ Add Service Record</button>
-      </div>
-
-      <div class="card">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Equipment</th>
-                <th>Work Performed</th>
-                <th>Technician</th>
-              </tr>
-            </thead>
-            <tbody id="maintenanceTable"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <section class="page" id="diagnostics">
-      <h1>Diagnostic Engine</h1>
-      <div class="subtitle">Generic engineering troubleshooting workflows</div>
-
-      <div class="diagnostic">
-        <h3>Equipment does not power on</h3>
-        <p>Basic electrical troubleshooting sequence.</p>
-        <button class="btn secondary" data-diagnostic="power">Start diagnostic</button>
-        <div class="result" id="result-power">
-          <strong>Step 1:</strong> Check the external power source.<br>
-          <strong>Step 2:</strong> Inspect the power cable and connector.<br>
-          <strong>Step 3:</strong> Verify the input voltage against the manufacturer's specifications.<br>
-          <strong>Step 4:</strong> If safe and authorized, inspect the internal power supply and protection devices.<br>
-          <strong>Important:</strong> Disconnect power before internal inspection. Follow the service manual.
-        </div>
-      </div>
-
-      <div class="diagnostic">
-        <h3>Equipment shuts down unexpectedly</h3>
-        <p>Basic power, temperature and protection checks.</p>
-        <button class="btn secondary" data-diagnostic="shutdown">Start diagnostic</button>
-        <div class="result" id="result-shutdown">
-          <strong>Step 1:</strong> Record the exact shutdown conditions.<br>
-          <strong>Step 2:</strong> Check the power supply and input stability.<br>
-          <strong>Step 3:</strong> Review temperature and cooling system operation.<br>
-          <strong>Step 4:</strong> Check alarms and error logs.<br>
-          <strong>Step 5:</strong> Compare findings with the manufacturer's service documentation.
-        </div>
-      </div>
-
-      <div class="diagnostic">
-        <h3>Abnormal temperature</h3>
-        <p>Basic thermal system troubleshooting.</p>
-        <button class="btn secondary" data-diagnostic="temperature">Start diagnostic</button>
-        <div class="result" id="result-temperature">
-          <strong>Step 1:</strong> Record the measured and target temperatures.<br>
-          <strong>Step 2:</strong> Check temperature sensor connections.<br>
-          <strong>Step 3:</strong> Inspect airflow, fans and cooling paths.<br>
-          <strong>Step 4:</strong> Review alarms and temperature trends.<br>
-          <strong>Step 5:</strong> Verify sensor accuracy using an approved procedure.
-        </div>
-      </div>
-    </section>
-
-    <section class="page" id="knowledge">
-      <h1>Knowledge Base</h1>
-      <div class="subtitle">Central place for engineering knowledge</div>
-
-      <div class="grid">
-        <div class="card">
-          <div class="section-title">Service Documentation</div>
-          <p class="metric-label">Organize manuals and technical documents.</p>
-        </div>
-        <div class="card">
-          <div class="section-title">Technical Notes</div>
-          <p class="metric-label">Save engineering observations and solutions.</p>
-        </div>
-        <div class="card">
-          <div class="section-title">Diagnostic Procedures</div>
-          <p class="metric-label">Build reusable troubleshooting workflows.</p>
-        </div>
-      </div>
-      <p class="metric-label">Knowledge Base storage will be developed in a future version.</p>
-    </section>
-
-    <section class="page" id="settings">
-      <h1>Settings</h1>
-      <div class="subtitle">Platform configuration</div>
-      <div class="card">
-        <div class="section-title">Business Edition</div>
-        <p>Platform: Biomedical Engineering Hub</p>
-        <p>Version: 0.1 Prototype</p>
-        <p>Data storage: Browser session only in this prototype.</p>
-        <p class="metric-label">This version does not have user accounts, cloud storage or access control.</p>
-      </div>
-    </section>
+    <div class="card">
+      <div class="metric-label">Service Records</div>
+      <div class="metric-value" id="totalRecords">0</div>
+    </div>
 
   </div>
+
+  <div class="card">
+    <div class="section-title">Recent Activity</div>
+    <div id="recentActivity">No recent activity.</div>
+  </div>
+
+</section>
+
+
+<section class="page" id="equipment">
+
+  <h1>Equipment Management</h1>
+  <div class="subtitle">Manage your medical equipment inventory</div>
+
+  <div class="toolbar">
+    <input id="equipmentSearch" placeholder="Search equipment...">
+    <button class="btn" id="addEquipmentBtn">+ Add Equipment</button>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Equipment</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="equipmentTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="page" id="maintenance">
+
+  <h1>Maintenance</h1>
+  <div class="subtitle">Service history and maintenance records</div>
+
+  <div class="toolbar">
+    <button class="btn" id="addRecordBtn">+ Add Service Record</button>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Equipment</th>
+            <th>Work Performed</th>
+            <th>Technician</th>
+          </tr>
+        </thead>
+        <tbody id="maintenanceTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="page" id="diagnostics">
+
+  <h1>Diagnostic Engine</h1>
+  <div class="subtitle">Generic engineering troubleshooting workflows</div>
+
+  <div class="diagnostic">
+    <h3>Equipment does not power on</h3>
+    <p>Basic electrical troubleshooting sequence.</p>
+    <button class="btn secondary" data-diagnostic="power">Start diagnostic</button>
+
+    <div class="result" id="result-power">
+      <strong>Step 1:</strong> Check the external power source.<br>
+      <strong>Step 2:</strong> Inspect the power cable and connector.<br>
+      <strong>Step 3:</strong> Verify input voltage against manufacturer specifications.<br>
+      <strong>Step 4:</strong> If safe and authorized, inspect the power supply and protection devices.<br>
+      <strong>Important:</strong> Disconnect power before internal inspection. Follow the service manual.
+    </div>
+  </div>
+
+  <div class="diagnostic">
+    <h3>Equipment shuts down unexpectedly</h3>
+    <p>Basic power, temperature and protection checks.</p>
+    <button class="btn secondary" data-diagnostic="shutdown">Start diagnostic</button>
+
+    <div class="result" id="result-shutdown">
+      <strong>Step 1:</strong> Record the exact shutdown conditions.<br>
+      <strong>Step 2:</strong> Check the power supply and input stability.<br>
+      <strong>Step 3:</strong> Review temperature and cooling system operation.<br>
+      <strong>Step 4:</strong> Check alarms and error logs.<br>
+      <strong>Step 5:</strong> Compare findings with the manufacturer's service documentation.
+    </div>
+  </div>
+
+  <div class="diagnostic">
+    <h3>Abnormal temperature</h3>
+    <p>Basic thermal system troubleshooting.</p>
+    <button class="btn secondary" data-diagnostic="temperature">Start diagnostic</button>
+
+    <div class="result" id="result-temperature">
+      <strong>Step 1:</strong> Record measured and target temperatures.<br>
+      <strong>Step 2:</strong> Check temperature sensor connections.<br>
+      <strong>Step 3:</strong> Inspect airflow, fans and cooling paths.<br>
+      <strong>Step 4:</strong> Review alarms and temperature trends.<br>
+      <strong>Step 5:</strong> Verify sensor accuracy using an approved procedure.
+    </div>
+  </div>
+
+</section>
+
+
+<section class="page" id="knowledge">
+
+  <h1>Knowledge Base</h1>
+  <div class="subtitle">Central place for engineering knowledge</div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="section-title">Service Documentation</div>
+      <p class="metric-label">Organize manuals and technical documents.</p>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Technical Notes</div>
+      <p class="metric-label">Save engineering observations and solutions.</p>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Diagnostic Procedures</div>
+      <p class="metric-label">Build reusable troubleshooting workflows.</p>
+    </div>
+
+  </div>
+
+  <p class="metric-label">Knowledge Base storage will be developed in a future version.</p>
+
+</section>
+
+
+<section class="page" id="settings">
+
+  <h1>Settings</h1>
+  <div class="subtitle">Platform configuration</div>
+
+  <div class="card">
+    <div class="section-title">Business Edition</div>
+    <p>Platform: Biomedical Engineering Hub</p>
+    <p>Version: 0.2 Prototype</p>
+    <p>Data storage: Browser local storage.</p>
+    <p class="notice">This prototype has no user accounts, cloud database or access control.</p>
+  </div>
+
+</section>
+
+</div>
 </main>
 </div>
 
+
 <script>
-const equipment = [
+
+// ======================================
+// 1. DEFAULT DATA
+// ======================================
+
+const defaultEquipment = [
+  {
+    name:"Laboratory Analyzer",
+    category:"Laboratory",
+    location:"Laboratory 1",
+    status:"Operational"
+  },
+  {
+    name:"Autoclave",
+    category:"Sterilization",
+    location:"Sterilization Room",
+    status:"Operational"
+  },
+  {
+    name:"Diode Laser System",
+    category:"Aesthetic",
+    location:"Room 2",
+    status:"Maintenance"
+  },
+  {
+    name:"Microscope",
+    category:"Laboratory",
+    location:"Laboratory 2",
+    status:"Operational"
+  }
 ];
 
 const defaultRecords = [
-  {date:"2026-11-10", equipment:"Laboratory Analyzer", work:"Preventive maintenance", technician:"Engineer"},
-  {date:"2026-11-12", equipment:"Microscope", work:"Optical inspection", technician:"Engineer"}
+  {
+    date:"2026-11-10",
+    equipment:"Laboratory Analyzer",
+    work:"Preventive maintenance",
+    technician:"Engineer"
+  },
+  {
+    date:"2026-11-12",
+    equipment:"Microscope",
+    work:"Optical inspection",
+    technician:"Engineer"
+  }
 ];
+
+
+// ======================================
+// 2. LOAD AND SAVE DATA
+// ======================================
 
 function loadData(key, defaultValue) {
   try {
     const saved = localStorage.getItem(key);
-    return saved ? JSON.parse(saved) : defaultValue;
+
+    if (saved !== null) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed)) return parsed;
+    }
   } catch (error) {
-    console.error("Data loading error:", error);
-    return defaultValue;
+    console.error("Loading error:", error);
   }
+
+  return defaultValue.map(item => ({...item}));
 }
 
 let equipment = loadData("beh_equipment", defaultEquipment);
 let records = loadData("beh_records", defaultRecords);
 
 function saveData() {
-  localStorage.setItem("beh_equipment", JSON.stringify(equipment));
-  localStorage.setItem("beh_records", JSON.stringify(records));
+  try {
+    localStorage.setItem("beh_equipment", JSON.stringify(equipment));
+    localStorage.setItem("beh_records", JSON.stringify(records));
+    return true;
+  } catch (error) {
+    console.error("Saving error:", error);
+    alert("Could not save data. Check browser storage settings.");
+    return false;
+  }
 }
- ];
 
-const records = [
-  {date:"2026-11-10", equipment:"Laboratory Analyzer", work:"Preventive maintenance", technician:"Engineer"},
-  {date:"2026-11-12", equipment:"Microscope", work:"Optical inspection", technician:"Engineer"}
-];
+
+// ======================================
+// 3. NAVIGATION
+// ======================================
 
 function showPage(pageId) {
+
   document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
   });
 
   document.querySelectorAll(".nav-btn").forEach(button => {
-    button.classList.toggle("active", button.dataset.page === pageId);
+    button.classList.toggle(
+      "active",
+      button.dataset.page === pageId
+    );
   });
 
   const page = document.getElementById(pageId);
+
   if (!page) return;
 
   page.classList.add("active");
+
+  const navButton = document.querySelector(
+    `[data-page="${pageId}"]`
+  );
+
   document.getElementById("pageTitle").textContent =
-    document.querySelector(`[data-page="${pageId}"]`).textContent.trim();
+    navButton ? navButton.textContent.trim() : pageId;
 }
 
 document.querySelectorAll(".nav-btn").forEach(button => {
-  button.addEventListener("click", () => showPage(button.dataset.page));
+  button.addEventListener("click", function() {
+    showPage(this.dataset.page);
+  });
 });
 
+
+// ======================================
+// 4. SAFE TEXT OUTPUT
+// ======================================
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[char]);
+}
+
+
+// ======================================
+// 5. EQUIPMENT TABLE
+// ======================================
+
 function renderEquipment(filter = "") {
+
   const tbody = document.getElementById("equipmentTable");
+
   tbody.innerHTML = "";
 
   equipment
-    .filter(item => (item.name + item.category + item.location)
-    .toLowerCase().includes(filter.toLowerCase()))
+    .filter(item => (
+      item.name + " " +
+      item.category + " " +
+      item.location
+    ).toLowerCase().includes(filter.toLowerCase()))
     .forEach(item => {
+
       const row = document.createElement("tr");
-      const statusClass = item.status === "Maintenance" ? "warning" : "";
+
+      const statusClass =
+        item.status === "Maintenance" ? "warning" : "";
+
       row.innerHTML = `
         <td>${escapeHTML(item.name)}</td>
         <td>${escapeHTML(item.category)}</td>
         <td>${escapeHTML(item.location)}</td>
-        <td><span class="status ${statusClass}">${escapeHTML(item.status)}</span></td>
+        <td>
+          <span class="status ${statusClass}">
+            ${escapeHTML(item.status)}
+          </span>
+        </td>
       `;
+
       tbody.appendChild(row);
     });
 }
 
+
+// ======================================
+// 6. MAINTENANCE TABLE
+// ======================================
+
 function renderMaintenance() {
+
   const tbody = document.getElementById("maintenanceTable");
+
   tbody.innerHTML = "";
 
   records.forEach(record => {
+
     const row = document.createElement("tr");
+
     row.innerHTML = `
       <td>${escapeHTML(record.date)}</td>
       <td>${escapeHTML(record.equipment)}</td>
       <td>${escapeHTML(record.work)}</td>
       <td>${escapeHTML(record.technician)}</td>
     `;
+
     tbody.appendChild(row);
   });
 }
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;",
-    '"':"&quot;", "'":"&#39;"
-  })[char]);
-}
+
+// ======================================
+// 7. DASHBOARD
+// ======================================
 
 function updateDashboard() {
-  document.getElementById("totalEquipment").textContent = equipment.length;
+
+  document.getElementById("totalEquipment").textContent =
+    equipment.length;
+
   document.getElementById("operational").textContent =
     equipment.filter(item => item.status === "Operational").length;
+
   document.getElementById("underMaintenance").textContent =
     equipment.filter(item => item.status === "Maintenance").length;
-  document.getElementById("totalRecords").textContent = records.length;
 
-  document.getElementById("recentActivity").textContent =
-    records.length
-      ? records[records.length - 1].date + " — " +
-        records[records.length - 1].work
-      : "No recent activity.";
+  document.getElementById("totalRecords").textContent =
+    records.length;
+
+  const activity = document.getElementById("recentActivity");
+
+  if (records.length > 0) {
+
+    const latest = records[records.length - 1];
+
+    activity.textContent =
+      latest.date + " — " +
+      latest.equipment + " — " +
+      latest.work;
+
+  } else {
+
+    activity.textContent = "No recent activity.";
+
+  }
 }
 
-document.getElementById("equipmentSearch").addEventListener("input", event => {
-  renderEquipment(event.target.value);
-});
 
-document.getElementById("addEquipmentBtn").addEventListener("click", () => {
+// ======================================
+// 8. ADD EQUIPMENT
+// ======================================
+
+document.getElementById("addEquipmentBtn")
+.addEventListener("click", function() {
+
   const name = prompt("Equipment name:");
+
   if (!name || !name.trim()) return;
 
   const category = prompt("Category:") || "Other";
+
   const location = prompt("Location:") || "Not specified";
 
-  equipment.push({
-    name: name.trim(),
-    category: category.trim(),
-    location: location.trim(),
-    status: "Operational"
-  });
-  saeData();
-  
-  renderEquipment(document.getElementById("equipmentSearch").value);
+  const newEquipment = {
+    name:name.trim(),
+    category:category.trim(),
+    location:location.trim(),
+    status:"Operational"
+  };
+
+  equipment.push(newEquipment);
+
+  if (!saveData()) {
+    equipment.pop();
+    return;
+  }
+
+  renderEquipment(
+    document.getElementById("equipmentSearch").value
+  );
+
   updateDashboard();
-  alert("Equipment added successfully.");
+
+  alert("Equipment added and saved successfully.");
+
 });
 
-document.getElementById("addRecordBtn").addEventListener("click", () => {
+
+// ======================================
+// 9. ADD SERVICE RECORD
+// ======================================
+
+document.getElementById("addRecordBtn")
+.addEventListener("click", function() {
+
   if (equipment.length === 0) {
     alert("Add equipment first.");
     return;
   }
 
   const equipmentName = prompt(
-    "Equipment name:\n" + equipment.map(item => item.name).join("\n")
+    "Enter equipment name:\n\n" +
+    equipment.map(item => item.name).join("\n")
   );
-  if (!equipmentName) return;
+
+  if (!equipmentName || !equipmentName.trim()) return;
 
   const work = prompt("Work performed:");
+
   if (!work || !work.trim()) return;
 
-  records.push({
-    date: new Date().toISOString().slice(0,10),
-    equipment: equipmentName.trim(),
-    work: work.trim(),
-    technician: "Engineer"
-  });
+  const technician = prompt("Technician name:") || "Engineer";
 
-  saveData();
+  const newRecord = {
+    date:new Date().toISOString().slice(0,10),
+    equipment:equipmentName.trim(),
+    work:work.trim(),
+    technician:technician.trim()
+  };
+
+  records.push(newRecord);
+
+  if (!saveData()) {
+    records.pop();
+    return;
+  }
 
   renderMaintenance();
   updateDashboard();
-  alert("Service record added.");
+
+  alert("Service record saved successfully.");
+
 });
 
-document.querySelectorAll("[data-diagnostic]").forEach(button => {
-  button.addEventListener("click", () => {
-    const result = document.getElementById(
-      "result-" + button.dataset.diagnostic
-    );
-    result.style.display =
-      result.style.display === "block" ? "none" : "block";
-  });
+
+// ======================================
+// 10. EQUIPMENT SEARCH
+// ======================================
+
+document.getElementById("equipmentSearch")
+.addEventListener("input", function() {
+  renderEquipment(this.value);
 });
+
+
+// ======================================
+// 11. DIAGNOSTIC BUTTONS
+// ======================================
+
+document.querySelectorAll("[data-diagnostic]")
+.forEach(button => {
+
+  button.addEventListener("click", function() {
+
+    const result = document.getElementById(
+      "result-" + this.dataset.diagnostic
+    );
+
+    if (!result) return;
+
+    result.style.display =
+      result.style.display === "block"
+      ? "none"
+      : "block";
+
+  });
+
+});
+
+
+// ======================================
+// 12. INITIALIZE APPLICATION
+// ======================================
 
 renderEquipment();
 renderMaintenance();
 updateDashboard();
+
+console.log("Biomedical Engineering Hub loaded successfully.");
+
 </script>
 
 </body>
