@@ -408,12 +408,35 @@ input { min-width: 200px; }
 </div>
 
 <script>
-const equipment = [
-  {name:"Laboratory Analyzer", category:"Laboratory", location:"Laboratory 1", status:"Operational"},
+const equipment = [{name:"Laboratory Analyzer", category:"Laboratory", location:"Laboratory 1", status:"Operational"},
   {name:"Autoclave", category:"Sterilization", location:"Sterilization Room", status:"Operational"},
   {name:"Diode Laser System", category:"Aesthetic", location:"Room 2", status:"Maintenance"},
   {name:"Microscope", category:"Laboratory", location:"Laboratory 2", status:"Operational"}
 ];
+
+const defaultRecords = [
+  {date:"2026-11-10", equipment:"Laboratory Analyzer", work:"Preventive maintenance", technician:"Engineer"},
+  {date:"2026-11-12", equipment:"Microscope", work:"Optical inspection", technician:"Engineer"}
+];
+
+function loadData(key, defaultValue) {
+  try {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : defaultValue;
+  } catch (error) {
+    console.error("Data loading error:", error);
+    return defaultValue;
+  }
+}
+
+let equipment = loadData("beh_equipment", defaultEquipment);
+let records = loadData("beh_records", defaultRecords);
+
+function saveData() {
+  localStorage.setItem("beh_equipment", JSON.stringify(equipment));
+  localStorage.setItem("beh_records", JSON.stringify(records));
+}
+ ];
 
 const records = [
   {date:"2026-11-10", equipment:"Laboratory Analyzer", work:"Preventive maintenance", technician:"Engineer"},
@@ -516,7 +539,8 @@ document.getElementById("addEquipmentBtn").addEventListener("click", () => {
     location: location.trim(),
     status: "Operational"
   });
-
+  saeData();
+  
   renderEquipment(document.getElementById("equipmentSearch").value);
   updateDashboard();
   alert("Equipment added successfully.");
@@ -542,6 +566,8 @@ document.getElementById("addRecordBtn").addEventListener("click", () => {
     work: work.trim(),
     technician: "Engineer"
   });
+
+  saveData();
 
   renderMaintenance();
   updateDashboard();
